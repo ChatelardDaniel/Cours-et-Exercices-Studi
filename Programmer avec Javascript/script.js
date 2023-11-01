@@ -37,3 +37,9 @@ left=200, option: position à partir de la gauche
 top=100' option: position à partir du haut
 );
 */
+
+const button3 = document.getElementById("alert");
+
+button3.addEventListener('click', () => {
+  window.alert("Message dans un window.alert"); //ou alert("Message")
+});
