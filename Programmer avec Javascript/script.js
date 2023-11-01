@@ -38,8 +38,17 @@ top=100' option: position à partir du haut
 );
 */
 
+// Méthode alert()
 const button3 = document.getElementById("alert");
 
 button3.addEventListener('click', () => {
   window.alert("Message dans un window.alert"); //ou alert("Message")
+});
+
+// Méthode prompt()
+const button4 = document.getElementById("prompt");
+
+button4.addEventListener('click', () => {
+    let mot = window.prompt("Quel mot afficher ?");
+    window.alert(mot);
 });
