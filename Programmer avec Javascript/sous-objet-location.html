@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les sous-objets de window</title>
+</head>
+<body>
+    <h1>Les sous-objets de window</h1>
+    <h2>L’objet window.location</h2>
+
+    <p></p>
+
+    <p>
+        En JavaScript, l’objet location représente l’URL de la page web actuelle et fournit des propriétés dont des méthodes pour interagir avec cette URL.
+    </p>
+
+    <p>
+        Voici quelques-unes des propriétés de l’objet location :
+    </p>
+    <ul>
+        <li>
+            location.href : contient l’URL complète de la page web,
+        </li>
+        <li>
+            location.protocol : contient le protocole utilisé pour accéder à la page web (par exemple « http : » ou « https : »),
+        </li>
+        <li>
+            location.host : contient le nom d’hôte (nom de domaine) de la page web,
+        </li>
+        <li>
+            location.pathname : contient le chemin d’accès de la page web, sans le nom d’hôte.
+        </li>
+    </ul>
+
+    <p>
+        Voici quelques méthodes de l’objet location :
+    </p>
+
+    <ul>
+        <li>
+            location.assign() : permet de charger la page web dont l’URL est passée comme argument. Il se produit la même chose quand on modifie la valeur de location.href. Elle ajoute la nouvelle URL dans l’historique de navigation.
+        </li>
+        <li>
+            location.replace() : permet de remplacer la page web actuelle par celle dont l’URL est passée comme argument. À la différence de la méthode précédente, la méthode location.replace() remplace l’URL courante par la nouvelle URL dans l’historique du navigateur. Il n’y a donc pas un ajout d’une entrée dans l’historique de navigation, mais un remplacement d’une entrée par une autre.
+        </li>
+        <li>
+            location.toString() : permet de récupérer l’URL sous la forme d’une chaîne de caractères.
+        </li>
+    </ul>
+    <br>
+    <button id='charger'>
+        Charger un nouveau document
+    </button>
+    <button id='recharger'>
+        Recharger le document
+    </button>
+    <button id='changer'>
+        Remplacer le document
+    </button>
+    <br>
+    <br>
+    <a href="../index.html">Retour au sommaire</a>
+    <script>
+        let para = document.querySelector('p');
+        let charger = document.getElementById('charger');
+        let recharger = document.getElementById('recharger');
+        let changer = document.getElementById('changer');
+
+        charger.addEventListener('click', charge);
+        recharger.addEventListener('click', recharge);
+        changer.addEventListener('click', change);
+
+        function charge() {
+            location.assign('http://pierre-giraud.com');
+        }
+        function recharge() {
+            location.reload();
+        }
+        function change() {
+            location.replace('http://pierre-giraud.com');
+        }
+
+        let url = location.href;
+        let chemin = location.pathname;
+
+        para.innerHTML = 'URL : ' + url + '<br>Chemin : ' + chemin;
+    </script>
+</body>
+</html>
