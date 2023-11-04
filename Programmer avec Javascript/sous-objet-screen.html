@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les sous-objets de window</title>
+</head>
+<body>
+    <h1>Les sous-objets de window</h1>
+    <h2>L’objet window.screen</h2>
+
+    <!-- Premier paragraphe sélectionné par "querySelector('p')"-->
+    <p></p>
+    <p>
+        En JavaScript, l’objet screen représente l’écran sur lequel s’affiche le navigateur, donc de votre ordinateur, téléphone ou tablette.
+    </p>
+    <p>
+        Il contient des informations sur la résolution de l’écran, la taille de l’écran et la profondeur de couleur.
+    </p>
+    <br>
+    <br>
+    <a href="../index.html">Retour au sommaire</a>
+    <script>
+        var hauteur = screen.height;
+        var hauteurDispo = screen.availHeight;
+        var reso = screen.pixelDepth;
+
+        // sélection du premier <p></p>
+        var para = document.querySelector('p');
+        para.innerHTML = 
+            'Hauteur de l\'écran : ' + hauteur +
+            '<br>hauteur disponible : ' + hauteurDispo +
+            '<br> Résolution : ' + reso + ' bits/px';
+    </script>
+</body>
+</html>
