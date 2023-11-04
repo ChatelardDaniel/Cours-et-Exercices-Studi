@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les sous-objets de window</title>
+</head>
+<body>
+    <h1>Les sous-objets de window</h1>
+    <h2>L’objet window.history</h2>
+
+    <p id="con">
+
+    </p>
+
+    <p>
+        L’objet history expose plusieurs méthodes et propriétés qui permettent de naviguer vers les pages précédentes ou suivantes dans l’historique du navigateur, d’ajouter ou de remplacer des entrées dans l’historique, de vérifier le nombre d’entrées dans l’historique, etc.
+    </p>
+
+    <p>
+        La propriété length permet de connaître le nombre d’entrées dans l’historique de navigation (nombre de pages dans l’historique, voir la vidéo suivante).
+    </p>
+
+    <p>
+        Voici quelques méthodes utiles de l’objet window.history :
+    </p>
+
+    <ul>
+        <li>
+            history.back() : charge la page précédente dans l’historique du navigateur,
+        </li>
+        <li>
+            history.forward() : charge la page suivante dans l’historique du navigateur,
+        </li>
+        <li>
+            history.go(n) : charge la page située n positions dans l’historique du navigateur.
+        </li>
+    </ul>
+
+    <p>
+        Avant de voir quelques exemples concrets d’utilisation de méthodes de window.history, nous allons apporter des modifications à l’architecture de notre répertoire.
+    </p>
+
+    <button id="precedent">
+        Charge la dernière page visitée
+    </button>
+    <button id="suivant">
+        Charge la page suivante dans l'historique
+    </button>
+    <button id="specifique">
+        3 pages en arrière
+    </button>
+    <br><br>
+
+    <a href="../index.html">Retour au sommaire</a>
+    <script>
+        let para = document.querySelector('#con');
+        let precedent = document.getElementById('precedente');
+        let suivant = document.getElementById('suivant');
+        let specifique = document.getElementById('specifique');
+
+        precedent.addEventListener('click', arriere);
+        suivant.addEventListener('click', avant);
+        specifique.addEventListener('click', spec);
+
+        function arriere() {
+            history.back();
+        }
+
+        function avant() {
+            history.forward();
+        }
+
+        function spec() {
+            history.go(-3);
+        }
+
+        let histo = history.length;
+
+        para.innerHTML = 'URLs : ' + histo;
+
+    </script>
+</body>
+</html>
