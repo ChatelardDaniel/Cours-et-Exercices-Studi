@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les sous-objets de window</title>
+</head>
+<body>
+    <h1>Les sous-objets de window</h1>
+    <h2>L’objet window.cookie</h2>
+
+    <p id="cook"></p>
+    <br><br>
+
+    <a href="../index.html">Retour au sommaire</a>
+    <script>
+        // créer un cookie avec une date d'expiration
+        document.cookie = 'prenom1 = pierre; expires = Sun, 05 Nov 2023 20:00:00 GMT; path=/';
+        document.cookie = 'prenom2 = Victor; expires = Sun, 05 Nov 2023 20:00:00 GMT; path=/';
+
+        // Supprimer un cookie en mettant la date d'expiration passé
+        document.cookie = 'prenom2 = Victor; expires = Wed, 01 Nov 2023 20:00:00 GMT; path=/';
+
+        // Afficher le cookie
+        let c = document.cookie;
+        document.getElementById('cook').innerHTML = c;
+        </script>
+</body>
+</html>
