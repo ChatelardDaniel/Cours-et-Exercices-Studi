@@ -14,16 +14,72 @@
 
     <a href="../index.html">Retour au sommaire</a>
     <script>
-        // créer un cookie avec une date d'expiration
-        document.cookie = 'prenom1 = pierre; expires = Sun, 05 Nov 2023 20:00:00 GMT; path=/';
-        document.cookie = 'prenom2 = Victor; expires = Sun, 05 Nov 2023 20:00:00 GMT; path=/';
+        // // créer un cookie avec une date d'expiration
+        // document.cookie = 'prenom1 = pierre; expires = Sun, 05 Nov 2023 20:00:00 GMT; path=/';
+        // document.cookie = 'prenom2 = Victor; expires = Sun, 05 Nov 2023 20:00:00 GMT; path=/';
 
-        // Supprimer un cookie en mettant la date d'expiration passé
-        document.cookie = 'prenom2 = Victor; expires = Wed, 01 Nov 2023 20:00:00 GMT; path=/';
+        // // Supprimer un cookie en mettant la date d'expiration passé
+        // document.cookie = 'prenom2 = Victor; expires = Wed, 01 Nov 2023 20:00:00 GMT; path=/';
 
-        // Afficher le cookie
-        let c = document.cookie;
-        document.getElementById('cook').innerHTML = c;
+        // // Afficher le cookie
+        // let c = document.cookie;
+        // document.getElementById('cook').innerHTML = c;
+
+        // fonction pour créer un cookie
+        function creerCookie(nom,valeur,jour) {
+            // Si les jours ont bien été définis
+            if (jour) {
+                // On crée un objet date stockant la date actuelle
+                var date = new Date();
+                // On définit la date d'expiration du cookie
+                date.setTime(date.getTime() + (jour*24*60*60*1000));
+                // On met la date au bon format pour un cookie
+                var exp = '; expires='+ date.toGMTString();
+            }
+            // Si les jours n'ont pas été définis, pas besoin de calcul
+            else {
+                var exp = '';
+            }
+            document.cookie = nom+'='+valeur+exp+'; path=/';
+        }
+
+        // lire le cookie
+        function lireCookie(nom){
+            // On récupère le nom du cookie et le signe '='
+            var nomEtEgal = nom + '=';
+            // récupère tous les cookies dans un tableau
+            var cTableau = document.cookie.split(';');
+            // Parcourt le tableau créé
+            for(var i=0; i<cTableau.length; i++) {
+                // On récupère toous les noms et valeurs des cookies
+                var c = cTableau[i];
+                // On supprime les espaces potentiels dans c jusqu'à tomber sur le nom d'un cookie
+                while (c.charAt(0)==' ') {
+                    c = c.substring(1, c.length);
+                }
+                if(c.indexOf(nomEtEgal) == 0) {
+                    return c.substring(nomEtEgal.length, c.length);
+                }
+            }
+            // Si nom du cookie non trouvé, il n'existe pas
+            return null;
+        }
+
+        // supprimer le cookie
+        function supprimerCookie(nom) {
+            // On donne le nom du cookie à supprimer, puis on utilise creerCookie() pour indiquer une date d'expiration passé
+            creerCookie(nom, '', -1);
+        }
+
+        // On crée deux cookies pour le test
+        creerCookie('Cookie1','Je suis le premier cookie',7);
+        creerCookie('Cookie2','Je suis le deuxième cookie',7);
+
+        //supprimerCookie('Cookie1');
+
+        // Afficher les cookies pour le test
+        var affiche = document.getElementById('cook');
+        affiche.innerHTML = 'Valeur : ' + lireCookie('Cookie1');
         </script>
 </body>
 </html>
